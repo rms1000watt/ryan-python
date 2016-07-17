@@ -87,7 +87,8 @@ class Logger():
 				f.write(line)
 				f.write('\r\n')
 
-def main():
+
+if __name__ == '__main__':
 	CWD = os.path.dirname(os.path.abspath(__file__))
 	l = Logger("TEST", CWD)
 	l.log("testing 123")
@@ -97,7 +98,3 @@ def main():
 
 	try: raise
 	except Exception as e: print getErrorLineNumber()
-
-
-if __name__ == '__main__':
-	main()
