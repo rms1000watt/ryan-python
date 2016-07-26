@@ -3,7 +3,7 @@ import sys
 import json
 import binascii
 import datetime 
-
+import platform
 
 def getTime():
 	"""Return a readable date string
@@ -56,6 +56,17 @@ def getErrorLineNumber():
 	"""
 	exc_type, exc_obj, exc_tb = sys.exc_info()
 	return exc_tb.tb_lineno
+
+def say(msg):
+	"""Read a message through the speakers
+
+	Darwin systems only
+
+	Args:
+		msg: string that will be read aloud
+	"""
+	if platform.system() == 'Darwin':
+		os.system("say %s" %(msg))
 
 
 class Logger():
