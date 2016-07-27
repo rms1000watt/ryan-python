@@ -6,7 +6,7 @@ import datetime
 import platform
 
 def getTime():
-	"""Return a readable date string
+	"""Return a readable time string
 
 	Returns:
 		string with time with format Hour:Minute:Second
@@ -17,6 +17,15 @@ def getTime():
 		- Python unix time is in seconds, but Javascript and other languages use milliseconds
 	"""
 	return datetime.datetime.now().strftime('%H:%M:%S')
+
+
+def getDate():
+	"""Return a readable date string
+	
+	Returns:
+		string with default date format YYYY-MM-DD
+	"""
+	return str(datetime.datetime.now().date())
 
 
 def toJson(val):
