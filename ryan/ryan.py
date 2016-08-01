@@ -86,10 +86,11 @@ class Logger():
 		scriptLogDescription: string in reference to the name of your script, ie. 'AS' (for script api_server.py)
 		enableLogging: boolean to enable logging to stdout
 	"""
-	def __init__(self, scriptLogDescription, currentWorkingDirectory, enableLogging=True):
+	def __init__(self, scriptLogDescription, currentWorkingDirectory, enableLogging=True, toFile=False):
 		self.currentWorkingDirectory = currentWorkingDirectory
 		self.scriptLogDescription = scriptLogDescription
 		self.enableLogging = enableLogging
+		self.toFile = toFile
 	
 	def log(self, msg, toFile=False):
 		"""Print some text with a readable timestamp
@@ -101,7 +102,7 @@ class Logger():
 		line = '[%s] %s: %s' %(getTime(), self.scriptLogDescription, msg)
 		if self.enableLogging:
 			print line
-		if toFile:
+		if toFile or self.toFile:
 			fp = '%s\%s.log' %(self.currentWorkingDirectory, self.scriptLogDescription) 
 			with open(fp, 'a') as f:
 				f.write(line)
@@ -115,6 +116,9 @@ if __name__ == '__main__':
 
 	print toJson({})
 	print randomString(10)
+	print getTime()
+	print getDate()
+	say("hello")
 
 	try: raise
 	except Exception as e: print getErrorLineNumber()
