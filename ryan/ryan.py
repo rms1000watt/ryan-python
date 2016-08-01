@@ -92,7 +92,7 @@ class Logger():
 		self.enableLogging = enableLogging
 		self.toFile = toFile
 	
-	def log(self, msg, toFile=False):
+	def log(self, msg, toFile='ignore'):
 		"""Print some text with a readable timestamp
 
 		Args:
@@ -102,8 +102,11 @@ class Logger():
 		line = '[%s] %s: %s' %(getTime(), self.scriptLogDescription, msg)
 		if self.enableLogging:
 			print line
-		if toFile or self.toFile:
-			fp = '%s\%s.log' %(self.currentWorkingDirectory, self.scriptLogDescription) 
+		_toFile = toFile if toFile != 'ignore' else self.toFile
+		if _toFile:
+			try: os.mkdir('%s/logs' %(self.currentWorkingDirectory))
+			except: pass
+			fp = '%s/logs/%s.log' %(self.currentWorkingDirectory, self.scriptLogDescription) 
 			with open(fp, 'a') as f:
 				f.write(line)
 				f.write('\r\n')
