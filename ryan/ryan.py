@@ -110,6 +110,10 @@ class Logger():
 			with open(fp, 'a') as f:
 				f.write(line)
 				f.write('\r\n')
+			fp = '%s/logs/main.log' %(self.currentWorkingDirectory) 
+			with open(fp, 'a') as f:
+				f.write(line)
+				f.write('\r\n')
 
 
 if __name__ == '__main__':
