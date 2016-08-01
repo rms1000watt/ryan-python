@@ -11,7 +11,7 @@ from distutils.core import setup
 setup(
   name = 'ryan',
   packages = ['ryan'],
-  version = '0.0.18',
+  version = '0.0.19',
   description = 'Common Python Tools',
   author = 'Ryan Smith',
   author_email = 'rms1000watt@gmail.com',
